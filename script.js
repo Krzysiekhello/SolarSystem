@@ -15,11 +15,6 @@ class Planets {
         this.radius = radius;
         this.angle = angle;
     }
-    drawSun = () => {
-        const img = new Image();
-        img.src = this.imgPath;
-        context.drawImage(img, this.horizontalPosition, this.verticalPosition, this.width, this.height);
-    }
     drawPlanets = () => {
         const img = new Image();
         img.src = this.imgPath;
