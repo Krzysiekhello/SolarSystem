@@ -25,23 +25,18 @@
 #stars-group-1{
   @include stars-content(1800, #fff, 200, 1, 0);
 }
-
 #stars-group-2{
   @include stars-content(1800, #fff, 200, 1, 0.1);
 }
-
 #stars-group-3{
   @include stars-content(1800, #fff, 200, 1, 0.2);
 }
-
 #stars-group-4{
   @include stars-content(1800, #fff, 200, 1, 0.3);
 }
-
 #stars-group-5{
   @include stars-content(1800, #fff, 200, 1, 0.4);
 }
-
 #stars-group-6{
   @include stars-content(1800, #fff, 200, 1, 0.5);
 }
@@ -49,4 +44,31 @@
   0%   {opacity: 0;}
   50%  {opacity: 1;}
   100% {opacity: 0;}
+}
+img {
+  position: absolute;
+  left: 110%;
+  top: 5%;
+  height: 30px;
+  width: 30px;
+  transform: rotate(-135deg);
+  animation: spaceRocket 20s 1s ease-in;
+  z-index: 1;
+}
+@keyframes spaceRocket {
+  50% {
+    left: -10%;
+    top: 5%;
+    transform: rotate(-135deg);
+  }
+ 70% {
+   left: -10%;
+   top: 80%;
+   transform: scale(2) rotate(35deg);
+ }
+  100% {
+    left: 110%;
+    top: 80%;
+    transform: scale(2) rotate(35deg);
+  }
 }
