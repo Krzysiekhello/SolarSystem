@@ -1,49 +1,55 @@
-@function generate-random-stars ($screen-width, $color, $density){
-  $h-shadow: random($screen-width);
-  $v-shadow: random($screen-width);
-  $stars: '#{$h-shadow}px #{$v-shadow}px #{$color}';
+@function generateRandomStars ($screen-width, $color, $density){
+  $horizontalshadow: random($screen-width);
+  $verticalshadow: random($screen-width);
+  $stars: '#{$horizontalshadow}px #{$verticalshadow}px #{$color}';
   @for $i from 2 through $density {
-    $h-shadow: random($screen-width);
-    $v-shadow: random($screen-width);
-    $stars: '#{$stars}, #{$h-shadow}px #{$v-shadow}px #{$color}';
+    $horizontalshadow: random($screen-width);
+    $verticalshadow: random($screen-width);
+    $stars: '#{$stars}, #{$horizontalshadow}px #{$verticalshadow}px #{$color}';
   }
   @return unquote($stars);
 }
-@mixin stars-content($screen-width, $color, $density, $speed, $delay) {
+@mixin starsContent($screenWidth, $color, $density, $speed, $delay) {
   width: 2px;
   height: 2px;
   border-radius: 50%;
   opacity: 0;
-  box-shadow: generate-random-stars($screen-width, $color, $density);
-  animation-name: glowing-stars;
+  box-shadow: generateRandomStars($screenWidth, $color, $density);
+  animation-name: glowingStars;
   animation-duration: $speed+s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: linear;
   animation-delay: $delay+s;
+  }
+#starsGroup1{
+  @include starsContent(1800, #fff, 200, 1, 0);
 }
-#stars-group-1{
-  @include stars-content(1800, #fff, 200, 1, 0);
+#starsGroup2{
+  @include starsContent(1800, #fff, 200, 1, 0.1);
 }
-#stars-group-2{
-  @include stars-content(1800, #fff, 200, 1, 0.1);
+#starsGroup3{
+  @include starsContent(1800, #fff, 200, 1, 0.2);
 }
-#stars-group-3{
-  @include stars-content(1800, #fff, 200, 1, 0.2);
+#starsGroup4{
+  @include starsContent(1800, #fff, 200, 1, 0.3);
 }
-#stars-group-4{
-  @include stars-content(1800, #fff, 200, 1, 0.3);
+#starsGroup5{
+  @include starsContent(1800, #fff, 200, 1, 0.4);
 }
-#stars-group-5{
-  @include stars-content(1800, #fff, 200, 1, 0.4);
+#starsGroup6{
+  @include starsContent(1800, #fff, 200, 1, 0.5);
 }
-#stars-group-6{
-  @include stars-content(1800, #fff, 200, 1, 0.5);
-}
-@keyframes glowing-stars {
-  0%   {opacity: 0;}
-  50%  {opacity: 1;}
-  100% {opacity: 0;}
+@keyframes glowingStars {
+  0%   {
+      opacity: 0;
+  }
+  50% {
+      opacity: 0.8;
+  }
+  100% {
+      opacity: 0;
+  }
 }
 img {
   position: absolute;
@@ -53,7 +59,6 @@ img {
   width: 30px;
   transform: rotate(-135deg);
   animation: spaceRocket 20s 1s ease-in;
-  z-index: 1;
 }
 @keyframes spaceRocket {
   50% {
